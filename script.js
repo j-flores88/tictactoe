@@ -17,12 +17,20 @@ const markCell = (cell, index, currentClass) => {
     cell.classList.add(currentClass);
     gameBoard[index] = currentClass;
 
-    console.log(gameBoard)
+    getScore(gameBoard, currentClass)
 }
 
 const changeTurns = () => {
     circleTurn = !circleTurn
 }
+
+const getScore = (board, playerSign) => {
+    playerScore = []
+    board.findIndex((sign, index) => {
+        if(sign === playerSign) playerScore.push(index)
+      })
+    // return checkforwin(playerScore)
+  };
 
 cells.forEach(cell => {
     cell.addEventListener('click', cellClick, { once: true })
